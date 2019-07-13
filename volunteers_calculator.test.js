@@ -60,9 +60,8 @@ test('testResultsWithoutDayNames', function() {
   var calculator = new VolunteersCalculator();
 
   var volunteers = [17,20];
-
   var computedResults = calculator.getResults(volunteers);
 
-  expect(computedResults[0]).toEqual('17 additional volunteers are needed on day 0')
-  expect(computedResults[1]).toEqual('20 additional volunteers are needed on day 1')
+  expect(computedResults[0]).toEqual('17 additional volunteers are needed on day Monday')
+  expect(computedResults[1]).toEqual('20 additional volunteers are needed on day Tuesday')
 });

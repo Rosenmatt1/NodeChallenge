@@ -15,17 +15,16 @@ var VolunteersCalculator = module.exports = function(){
       var self = this;
       fs.readFile(f, 'utf8', function (err,data) {
         var lines = data.split('\n');
-        console.log("lines", lines)
+        // console.log("lines", lines)
         this.volunteerData = [];
         for(var line = 0; line < lines.length; line++){
           this.volunteerData.push(lines[line].split(','));
         }
-        console.log("this.volunteerData", this.volunteerData)
+        // console.log("this.volunteerData", this.volunteerData)
         var daysCount = (this.volunteerData.length-1);
-        console.log("daysCount", this.daysCount)
+        // console.log("daysCount", this.daysCount)
         var data = this.volunteerData.splice(1);
-        console.log("data", data)
-
+        // console.log("data", data)
         self.daysCount = daysCount;
         self.data = data;
         done(daysCount, data);
@@ -51,12 +50,13 @@ var VolunteersCalculator = module.exports = function(){
 
     getResults: function(volunteers) {
       this.results = [];
-      for(var i = 0; i< volunteers.length; i++) {
-        var result = (volunteers[i]+" additional volunteers are needed on day "+ i)
-        // this.data[i][3]
+      // data = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+      for(var i = 0; i < volunteers.length; i++) {
+        var result = (volunteers[i] + " additional volunteers are needed on day " + this.data[i][3])
         this.results.push(result)
-        console.log(result)
       }
+      // this.results.sort(function (a, b) { return b - a })
+      // console.log(this.results)
       return this.results;
     },
 
@@ -64,10 +64,10 @@ var VolunteersCalculator = module.exports = function(){
       if (this.bagsStillNeeded !== null) {
         return this.bagsStillNeeded;
       }
+
       this.bagsStillNeeded = [];
       for(var i = 0; i < this.daysCount; i++) {
         var bags = (this.data[i][1] - this.data[i][2]);
-        console.log("bags", bags)
         this.bagsStillNeeded.push(bags);
       };
       return this.bagsStillNeeded;
@@ -77,12 +77,10 @@ var VolunteersCalculator = module.exports = function(){
       if (this.bagsStockedPerVolunteer !== null) {
         return this.bagsStockedPerVolunteer;
       }
-
       this.bagsStockedPerVolunteer = [];
       for(var i = 0; i < this.daysCount; i++) {
         var bagsStocked = this.data[i][2];
         var volunteers = this.data[i][0];
-
         this.bagsStockedPerVolunteer.push((bagsStocked/volunteers));
       };
       return this.bagsStockedPerVolunteer;

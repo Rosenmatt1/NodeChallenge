@@ -1,4 +1,4 @@
 volunteers,goal_bags,actual_bags
-55,88,62
-43,62,53
-60,95,91
+55,88,62,Monday
+43,62,53,Wednesday
+60,95,91,Friday
