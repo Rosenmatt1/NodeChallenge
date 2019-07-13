@@ -15,13 +15,14 @@ var VolunteersCalculator = module.exports = function(){
       var self = this;
       fs.readFile(f, 'utf8', function (err,data) {
         var lines = data.split('\n');
-        console.log(lines)
+        console.log("lines", lines)
         this.volunteerData = [];
         for(var line = 0; line < lines.length; line++){
           this.volunteerData.push(lines[line].split(','));
         }
         console.log("this.volunteerData", this.volunteerData)
         var daysCount = (this.volunteerData.length-1);
+        console.log("daysCount", this.daysCount)
         var data = this.volunteerData.splice(1);
         console.log("data", data)
 
@@ -40,7 +41,6 @@ var VolunteersCalculator = module.exports = function(){
       if (this.volunteersNeeded !== null) {
         return this.volunteersNeeded;
       }
-
       var volunteersNeeded = [];
       for(var j = 0; j < this.daysCount; j++) {
         var v = (this.getBagsStillNeeded()[j]/this.getBagsStockedPerVolunteer()[j])
@@ -52,7 +52,8 @@ var VolunteersCalculator = module.exports = function(){
     getResults: function(volunteers) {
       this.results = [];
       for(var i = 0; i< volunteers.length; i++) {
-        var result = (volunteers[i]+" additional volunteers are needed on day "+ this.data[i][3])
+        var result = (volunteers[i]+" additional volunteers are needed on day "+ i)
+        // this.data[i][3]
         this.results.push(result)
         console.log(result)
       }
@@ -63,7 +64,6 @@ var VolunteersCalculator = module.exports = function(){
       if (this.bagsStillNeeded !== null) {
         return this.bagsStillNeeded;
       }
-
       this.bagsStillNeeded = [];
       for(var i = 0; i < this.daysCount; i++) {
         var bags = (this.data[i][1] - this.data[i][2]);
