@@ -21,6 +21,7 @@ Problem #4:
 -The application was well written with very good variable and function names, which made it easy to jump in, even though I had no previous experience with this style of object oriented programming. The code was well spaced and indented, which made it easy to read. 
 
 *The one change that I would have made is to make the data an array of objects, instead of an array of strings.  An array of objects is best practice.
+The object would look somehting like: { bagsNeeded: num, day: string }
 
 
 
