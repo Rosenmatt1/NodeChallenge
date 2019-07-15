@@ -50,9 +50,7 @@ var VolunteersCalculator = module.exports = function(){
 
     getResults: function(volunteers) {
       this.results = [];
-      
       for(var i = 0; i < volunteers.length; i++) {
-        console.log(this.data)
         var result =  ( volunteers[i] + " additional volunteers are needed on day " + (this.data ? this.data[i][3] : i) )
         this.results.push(result)
       }
@@ -61,6 +59,7 @@ var VolunteersCalculator = module.exports = function(){
         let slicedB = Number(b.slice(0, 5))
         return slicedB - slicedA
       })
+      console.log(this.results)
       return this.results;
     },
 
