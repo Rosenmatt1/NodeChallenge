@@ -15,16 +15,12 @@ var VolunteersCalculator = module.exports = function(){
       var self = this;
       fs.readFile(f, 'utf8', function (err,data) {
         var lines = data.split('\n');
-        // console.log("lines", lines)
         this.volunteerData = [];
         for(var line = 0; line < lines.length; line++){
           this.volunteerData.push(lines[line].split(','));
         }
-        // console.log("this.volunteerData", this.volunteerData)
         var daysCount = (this.volunteerData.length-1);
-        // console.log("daysCount", this.daysCount)
         var data = this.volunteerData.splice(1);
-        // console.log("data", data)
         self.daysCount = daysCount;
         self.data = data;
         done(daysCount, data);
@@ -51,7 +47,7 @@ var VolunteersCalculator = module.exports = function(){
     getResults: function(volunteers) {
       this.results = [];
       for(var i = 0; i < volunteers.length; i++) {
-        var result =  ( volunteers[i] + " additional volunteers are needed on day " + (this.data ? this.data[i][3] : i) )
+        var result =  ( volunteers[i] + " additional volunteers are needed on day " + (this.data ? this.data[i][3] : i))
         this.results.push(result)
       }
       this.results.sort(function (a, b) { 
@@ -59,7 +55,6 @@ var VolunteersCalculator = module.exports = function(){
         let slicedB = Number(b.slice(0, 5))
         return slicedB - slicedA
       })
-      console.log(this.results)
       return this.results;
     },
 
