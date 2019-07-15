@@ -13,7 +13,10 @@ result =volunteers[i] + " additional volunteers are needed on day " + i
 -I added new data to the .txt files to have the 4th element be the day of the week and replaces i with this.data[i][3]
 
 Problem #3:
+-In the getResults function, added a sort method on results array but the number of volunteers had been concatonated into a string.  
 
+Problem #4:
+-The application was well written with very good variable and function names, which made it easy to jump in, even though I had no previous experience with this style of object oriented programming. The code was well spaced and indented, which made it easy to read. 
 
 
 

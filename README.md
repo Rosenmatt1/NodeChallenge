@@ -106,4 +106,3 @@ Sort the results in descending order, based on volunteers needed.
 
 How would you refactor this program to improve it? Implement a few of your ideas.
 
--The application was well written with very good variable and function names, which made it easy to jump in, even though I had no previous experience with this style of object oriented programming.  

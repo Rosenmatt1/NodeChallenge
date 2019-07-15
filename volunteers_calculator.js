@@ -50,15 +50,20 @@ var VolunteersCalculator = module.exports = function(){
 
     getResults: function(volunteers) {
       this.results = [];
-      // data = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+      
       for(var i = 0; i < volunteers.length; i++) {
-        var result = (volunteers[i] + " additional volunteers are needed on day " + this.data[i][3])
+        console.log(this.data)
+        var result =  ( volunteers[i] + " additional volunteers are needed on day " + (this.data ? this.data[i][3] : i) )
         this.results.push(result)
       }
-      // this.results.sort(function (a, b) { return b - a })
-      // console.log(this.results)
+      this.results.sort(function (a, b) { 
+        let slicedA = Number(a.slice(0, 5))
+        let slicedB = Number(b.slice(0, 5))
+        return slicedB - slicedA
+      })
       return this.results;
     },
+
 
     getBagsStillNeeded: function() {
       if (this.bagsStillNeeded !== null) {
